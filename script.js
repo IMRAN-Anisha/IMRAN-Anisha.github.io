@@ -1,4 +1,6 @@
-// ---------- Typewriter ----------
+// =========================
+// Typewriter
+// =========================
 function initTypewriter() {
   const staticPhrase = "Hi, I'm Anisha Imran";
   const staticTextEl = document.getElementById("static-text");
@@ -23,8 +25,9 @@ function initTypewriter() {
   }
 
   function typeDynamic() {
-    if (currentChar < phrases[currentPhrase].length) {
-      typewriterText.textContent += phrases[currentPhrase].charAt(currentChar);
+    const phrase = phrases[currentPhrase];
+    if (currentChar < phrase.length) {
+      typewriterText.textContent += phrase.charAt(currentChar);
       currentChar++;
       setTimeout(typeDynamic, 100);
     } else {
@@ -46,66 +49,58 @@ function initTypewriter() {
   typeStaticText();
 }
 
-// ---------- Particles ----------
+// =========================
+// Particles
+// =========================
 function initParticles(options = {}) {
   const canvas = document.getElementById("particles-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
-  let w = 0;
-  let h = 0;
+  let w = window.innerWidth;
+  let h = window.innerHeight;
   let particles = [];
-  let DPR = window.devicePixelRatio || 1;
+  const DPR = window.devicePixelRatio || 1;
 
-  // Configurable options
-  // Use the same light-blue used in the hero repeating text by default
   const defaultColor = options.color || "#C8D9E6";
   const lineMaxDist = options.lineMaxDist || 120;
-  // increase default line alpha for better visibility
   const lineBaseAlpha = typeof options.lineBaseAlpha === 'number' ? options.lineBaseAlpha : 0.22;
+  const clearPadding = options.clearPadding || 24;
 
-  // Hero clear zone (reduce particles behind text)
   const heroContent = document.querySelector('.hero-content');
-  let heroRect = null;
-  const clearPadding = typeof options.clearPadding === 'number' ? options.clearPadding : 24; // px
+  let heroRect = heroContent ? heroContent.getBoundingClientRect() : null;
 
   function hexToRgb(hex) {
-    const m = hex.replace('#', '');
-    if (m.length === 3) {
-      const r = parseInt(m[0] + m[0], 16);
-      const g = parseInt(m[1] + m[1], 16);
-      const b = parseInt(m[2] + m[2], 16);
-      return { r, g, b };
-    }
-    if (m.length === 6) {
+    const m = hex.replace('#','');
+    if(m.length === 3){
       return {
-        r: parseInt(m.slice(0, 2), 16),
-        g: parseInt(m.slice(2, 4), 16),
-        b: parseInt(m.slice(4, 6), 16)
+        r: parseInt(m[0]+m[0],16),
+        g: parseInt(m[1]+m[1],16),
+        b: parseInt(m[2]+m[2],16)
+      };
+    } else if(m.length === 6){
+      return {
+        r: parseInt(m.slice(0,2),16),
+        g: parseInt(m.slice(2,4),16),
+        b: parseInt(m.slice(4,6),16)
       };
     }
-    return null;
+    return {r:47,g:65,b:86};
   }
 
-  const rgb = hexToRgb(defaultColor) || { r: 47, g: 65, b: 86 };
-
-  function updateHeroRect() {
-    if (heroContent) heroRect = heroContent.getBoundingClientRect();
-    else heroRect = null;
-  }
+  const rgb = hexToRgb(defaultColor);
 
   function resize() {
-    DPR = window.devicePixelRatio || 1;
-    w = Math.max(1, window.innerWidth);
-    h = Math.max(1, window.innerHeight);
+    w = window.innerWidth;
+    h = window.innerHeight;
     canvas.width = w * DPR;
     canvas.height = h * DPR;
     canvas.style.width = w + "px";
     canvas.style.height = h + "px";
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    // keep density moderate but increase visibility
+
     const target = Math.min(100, Math.floor((w * h) / 8000));
-    while (particles.length < target) particles.push(createParticle());
-    while (particles.length > target) particles.pop();
+    while(particles.length < target) particles.push(createParticle());
+    while(particles.length > target) particles.pop();
 
     updateHeroRect();
   }
@@ -121,49 +116,51 @@ function initParticles(options = {}) {
     };
   }
 
+  function updateHeroRect() {
+    heroRect = heroContent ? heroContent.getBoundingClientRect() : null;
+  }
+
   function inHeroArea(p) {
     if (!heroRect) return false;
-    const left = heroRect.left - clearPadding;
-    const right = heroRect.right + clearPadding;
-    const top = heroRect.top - clearPadding;
-    const bottom = heroRect.bottom + clearPadding;
-    return p.x >= left && p.x <= right && p.y >= top && p.y <= bottom;
+    return (
+      p.x >= heroRect.left - clearPadding &&
+      p.x <= heroRect.right + clearPadding &&
+      p.y >= heroRect.top - clearPadding &&
+      p.y <= heroRect.bottom + clearPadding
+    );
   }
 
   function update() {
-    ctx.clearRect(0, 0, w, h);
-    for (let i = 0; i < particles.length; i++) {
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<particles.length;i++){
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
-      if (p.x < -10) p.x = w + 10;
-      if (p.x > w + 10) p.x = -10;
-      if (p.y < -10) p.y = h + 10;
-      if (p.y > h + 10) p.y = -10;
 
-      // Skip drawing particles inside the hero content area for readability
-      if (!inHeroArea(p)) {
+      if(p.x<-10) p.x=w+10;
+      if(p.x>w+10) p.x=-10;
+      if(p.y<-10) p.y=h+10;
+      if(p.y>h+10) p.y=-10;
+
+      if(!inHeroArea(p)){
         ctx.beginPath();
-        const fillAlpha = Math.min(1, p.a * 1.2);
-        ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${fillAlpha})`;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${Math.min(1,p.a*1.2)})`;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
         ctx.fill();
       }
 
-      for (let j = i + 1; j < particles.length; j++) {
+      for(let j=i+1;j<particles.length;j++){
         const q = particles[j];
-        // don't draw connecting lines if either particle is inside hero area
-        if (inHeroArea(p) || inHeroArea(q)) continue;
+        if(inHeroArea(p) || inHeroArea(q)) continue;
         const dx = p.x - q.x;
         const dy = p.y - q.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < lineMaxDist) {
-          const lineAlpha = lineBaseAlpha * (1 - dist / lineMaxDist);
-          ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${lineAlpha})`;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < lineMaxDist){
+          ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${lineBaseAlpha*(1-dist/lineMaxDist)})`;
           ctx.lineWidth = 1.25;
           ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(q.x,q.y);
           ctx.stroke();
         }
       }
@@ -172,11 +169,60 @@ function initParticles(options = {}) {
   }
 
   window.addEventListener("resize", resize);
-  window.addEventListener("scroll", updateHeroRect, { passive: true });
+  window.addEventListener("scroll", updateHeroRect, {passive:true});
   resize();
   requestAnimationFrame(update);
 }
 
-// Run the typewriter and particles
-initTypewriter();
-initParticles();
+// =========================
+// Glass Nav
+// =========================
+function initGlassNav() {
+  const glassNav = document.getElementById("glassNav");
+  const navItems = document.querySelectorAll(".glass-nav-list li");
+  const indicator = document.querySelector(".glass-indicator");
+  const sections = Array.from(document.querySelectorAll("section"));
+
+  function updateIndicator(activeIndex){
+    const activeItem = navItems[activeIndex];
+    indicator.style.width = `${activeItem.offsetWidth}px`;
+    indicator.style.left = `${activeItem.offsetLeft}px`;
+  }
+
+  function onScroll(){
+    const scrollPos = window.scrollY;
+    const heroHeight = document.getElementById("home").offsetHeight;
+
+    // Show nav after hero
+    glassNav.classList.toggle("visible", scrollPos > heroHeight - 20);
+
+    // Highlight current section
+    let currentIndex = 0;
+    sections.forEach((sec, idx)=>{
+      if(scrollPos >= sec.offsetTop - 120) currentIndex = idx;
+    });
+
+    navItems.forEach(item => item.classList.remove("active"));
+    navItems[currentIndex].classList.add("active");
+
+    updateIndicator(currentIndex);
+  }
+
+  navItems.forEach((item, idx)=>{
+    item.addEventListener("click", ()=>{
+      sections[idx].scrollIntoView({behavior:"smooth"});
+    });
+  });
+
+  window.addEventListener("scroll", onScroll);
+  onScroll(); // initialize
+}
+
+// =========================
+// Init all
+// =========================
+document.addEventListener("DOMContentLoaded", ()=>{
+  initTypewriter();
+  initParticles({color:"#C8D9E6", lineMaxDist:120});
+  initGlassNav();
+});

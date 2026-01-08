@@ -6,6 +6,7 @@
 <title>Anisha Imran | Portfolio</title>
 <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="styles/home.css">
+<link rel="stylesheet" href="styles/header.css">
 <link rel="stylesheet" href="styles/about.css">
 <link rel="stylesheet" href="styles/experience.css">
 <link rel="stylesheet" href="styles/projects.css">
@@ -26,6 +27,18 @@
       <p class="tagline">Driven by curiosity, powered by code, building what's next.</p>
     </div>
   </section>
+
+  <nav class="glass-nav" id="glassNav">
+  <ul class="glass-nav-list">
+    <li data-section="aboutme">About Me</li>
+    <li data-section="experience">Experience</li>
+    <li data-section="projects">Projects</li>
+    <li data-section="contactme">Contact</li>
+    <li data-section="newsletter">Newsletter</li>
+  </ul>
+  <div class="glass-indicator"></div>
+</nav>
+
 
   <section class="about-section" id="aboutme">
     <h2 class="section-title">About Me</h2>
@@ -101,7 +114,6 @@
   <h2 class="section-title">Projects</h2>
 
   <div class="projects-grid">
-
     <article class="project-card">
       <div class="project-image">
         <img src="assets/project1.jpg" alt="Project thumbnail">
@@ -111,18 +123,57 @@
         <p class="project-description">
           A full stack productivity app designed to help students plan, track, and optimise their study routines.
         </p>
-
         <div class="project-tech">
           <span>React</span>
           <span>Node</span>
           <span>PostgreSQL</span>
         </div>
-
         <div class="project-links">
           <a href="#">GitHub</a>
           <a href="#">Live</a>
         </div>
       </div>
+    </article>
+
+        <article class="project-card">
+      <div class="project-image">
+        <img src="assets/project1.jpg" alt="Project thumbnail">
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Smart Study Planner</h3>
+        <p class="project-description">
+          A full stack productivity app designed to help students plan, track, and optimise their study routines.
+        </p>
+        <div class="project-tech">
+          <span>React</span>
+          <span>Node</span>
+          <span>PostgreSQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub</a>
+          <a href="#">Live</a>
+        </div>
+      </div>
+    </article>
+
+        <article class="project-card">
+      <div class="project-image">
+        <img src="assets/project1.jpg" alt="Project thumbnail">
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Smart Study Planner</h3>
+        <p class="project-description">
+          A full stack productivity app designed to help students plan, track, and optimise their study routines.
+        </p>
+        <div class="project-tech">
+          <span>React</span>
+          <span>Node</span>
+          <span>PostgreSQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub</a>
+          <a href="#">Live</a>
+        </div>
       </div>
     </article>
   </div>
@@ -135,13 +186,13 @@
     <div class="contact-info">
       <p>Feel free to reach out for collaborations, projects, or just a chat!</p>
       <div class="contact-buttons">
-        <a href="mailto:your.email@example.com" class="contact-btn">Email Me</a>
+        <a href="mailto:email" class="contact-btn">Email Me</a>
         <a href="https://www.linkedin.com/in/anisha-imran0311/" target="_blank" class="contact-btn">LinkedIn</a>
         <a href="https://github.com/yourusername" target="_blank" class="contact-btn">GitHub</a>
       </div>
     </div>
     <div class="contact-form">
-      <form action="mailto:your.email@example.com" method="POST" enctype="text/plain">
+      <form action="mailto:email" method="POST" enctype="text/plain">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
