@@ -1,0 +1,109 @@
+/* ---------- Hero Section ---------- */
+
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: #F5EFEB;
+  overflow: hidden;
+}
+
+/* ---------- Vertical Signature ---------- */
+
+.vertical-signature {
+  position: absolute;
+  right: -550px;
+  top: 50%;
+  transform: translateY(210%) rotate(-90deg);
+  transform-origin: top left;
+
+  font-family: 'Allura', cursive;
+  font-size: clamp(72px, 11vw, 140px);
+  color: rgba(47, 65, 86, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+/* ---------- Hero Content ---------- */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-left: clamp(96px, 14vw, 160px);
+  max-width: 640px;
+}
+
+.hero-content h1 {
+  font-size: clamp(36px, 5vw, 64px);
+  margin: 0;
+  color: #2F4156;
+}
+
+.hero-content h2 {
+  font-size: clamp(18px, 3vw, 28px);
+  margin-top: 16px;
+  color: #C8D9E6;
+}
+
+.tagline {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2F4156;
+}
+
+/* ---------- Cursor ---------- */
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background-color: #F7C9D4;
+  margin-left: 6px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* ---------- Background Canvas ---------- */
+
+.background-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ---------- Mobile Adjustments ---------- */
+
+@media (max-width: 768px) {
+  .vertical-signature {
+    font-size: clamp(72px, 22vh, 140px);
+    left: -24px;
+  }
+
+  .hero-content {
+    padding-left: 72px;
+  }
+}
+
+.hero-content {
+  padding-left: clamp(72px, 12vw, 140px);
+}
+
+@media (max-width: 768px) {
+  .vertical-signature {
+    font-size: clamp(48px, 16vw, 80px);
+    left: 0;
+  }
+
+  .hero-content {
+    padding-left: 64px;
+  }
+}
