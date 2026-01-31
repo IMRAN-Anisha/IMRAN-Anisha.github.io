@@ -48,16 +48,18 @@
   font-size: 15px;
   color: rgba(47, 65, 86, 0.6);
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .company-tabs li:hover {
   color: #2F4156;
+  padding-left: 8px;
 }
 
 .company-tabs li.active {
   color: #2F4156;
   font-weight: 500;
+  padding-left: 8px;
 }
 
 /* Indicator line AFTER company name */
@@ -80,12 +82,14 @@
 .job-panel {
   display: none;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .job-panel.active {
   display: block;
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* ---------- Job Text ---------- */
@@ -96,6 +100,22 @@
   font-weight: 500;
   color: #2F4156;
   margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.job-panel.active .job-title {
+  animation: slideInRight 0.4s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .job-title span {
@@ -125,6 +145,22 @@
   font-size: 14.5px;
   line-height: 1.8;
   color: rgba(47, 65, 86, 0.85);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: bulletFadeIn 0.4s ease forwards;
+}
+
+.job-bullets li:nth-child(1) { animation-delay: 0.1s; }
+.job-bullets li:nth-child(2) { animation-delay: 0.2s; }
+.job-bullets li:nth-child(3) { animation-delay: 0.3s; }
+.job-bullets li:nth-child(4) { animation-delay: 0.4s; }
+.job-bullets li:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes bulletFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .job-bullets li::before {

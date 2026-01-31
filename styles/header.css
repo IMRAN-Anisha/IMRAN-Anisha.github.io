@@ -36,7 +36,12 @@
   color: rgba(47, 65, 86, 0.75);
   cursor: pointer;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.glass-nav-list li:hover {
+  color: #2F4156;
+  transform: translateY(-1px);
 }
 
 .glass-nav-list li.active {

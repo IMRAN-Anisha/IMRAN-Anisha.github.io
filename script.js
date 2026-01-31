@@ -50,6 +50,121 @@ function initTypewriter() {
 }
 
 // =========================
+// Experience Section Tabs
+// =========================
+function initExperienceTabs() {
+  const companyTabs = document.querySelectorAll('.company-tabs li');
+  const jobPanels = document.querySelectorAll('.job-panel');
+  const tabIndicator = document.querySelector('.tab-indicator');
+
+  if (!companyTabs.length || !jobPanels.length) return;
+
+  function setActiveTab(index) {
+    // Update tab active states
+    companyTabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+    });
+
+    // Update job panels with smooth fade
+    jobPanels.forEach((panel, i) => {
+      if (i === index) {
+        panel.classList.add('active');
+        // Trigger reflow for transition
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(10px)';
+        requestAnimationFrame(() => {
+          panel.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+          panel.style.opacity = '1';
+          panel.style.transform = 'translateY(0)';
+        });
+      } else {
+        panel.classList.remove('active');
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(-10px)';
+      }
+    });
+
+    // Update indicator position
+    updateTabIndicator(index);
+  }
+
+  function updateTabIndicator(activeIndex) {
+    if (!tabIndicator) return;
+    const activeTab = companyTabs[activeIndex];
+
+    // Check if horizontal or vertical indicator
+    if (window.innerWidth <= 768) {
+      // Horizontal indicator (mobile)
+      tabIndicator.style.width = `${activeTab.offsetWidth}px`;
+      tabIndicator.style.height = '2px';
+      tabIndicator.style.top = 'auto';
+      tabIndicator.style.bottom = '0';
+      tabIndicator.style.left = `${activeTab.offsetLeft}px`;
+      tabIndicator.style.right = 'auto';
+    } else {
+      // Vertical indicator (desktop)
+      tabIndicator.style.width = '3px';
+      tabIndicator.style.height = `${activeTab.offsetHeight}px`;
+      tabIndicator.style.left = 'auto';
+      tabIndicator.style.right = '0';
+      tabIndicator.style.top = `${activeTab.offsetTop}px`;
+      tabIndicator.style.bottom = 'auto';
+    }
+  }
+
+  // Click handlers for tabs
+  companyTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      setActiveTab(index);
+    });
+  });
+
+  // Initialize first tab
+  setActiveTab(0);
+
+  // Update indicator on window resize
+  window.addEventListener('resize', () => {
+    const activeIndex = Array.from(companyTabs).findIndex(tab => tab.classList.contains('active'));
+    if (activeIndex >= 0) {
+      updateTabIndicator(activeIndex);
+    }
+  });
+}
+
+// =========================
+// Scroll Reveal Animations
+// =========================
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll(
+    '.section-title, .about-text, .about-badge, .experience-wrapper, ' +
+    '.project-card, .contact-info, .contact-form, .newsletter-section'
+  );
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Stagger animation for project cards
+        setTimeout(() => {
+          entry.target.classList.add('reveal-visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach(el => {
+    el.classList.add('reveal-hidden');
+    observer.observe(el);
+  });
+}
+
+// =========================
 // Particles
 // =========================
 function initParticles(options = {}) {
@@ -225,4 +340,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
   initTypewriter();
   initParticles({color:"#C8D9E6", lineMaxDist:120});
   initGlassNav();
+  initExperienceTabs();
+  initScrollReveal();
 });
