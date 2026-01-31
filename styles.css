@@ -188,70 +188,93 @@ body {
   margin-bottom: 32px;
 }
 /* =========================
-   Experience Section
+   Experience Section 
    ========================= */
+/* Micro Typography / Subtitle */
+.job-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(47,65,86,0.5);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* Optional: slight accent on hover of the panel */
+.job-panel.active:hover .job-subtitle {
+  color: #337ce8; /* matches your tab/indicator color */
+}
 
 .experience-section {
-  padding-left: 0;       /* remove any extra padding */
-  padding-right: 0;
-  max-width: 1200px;     /* match About section max-width */
-  margin: 0 auto;        /* center it like About */
-}
-
-/* ---------- Eyebrow / Section Title ---------- */
-
-.about-eyebrow {
-  font-family: 'Playfair Display SC', serif;
-  font-size: clamp(28px, 4vw, 36px);
-  font-weight: 600;
-  color: #2F4156;
-  margin-bottom: 48px;
-  text-align: left;
-  padding-left: 2rem; /* same as section content padding */
-  padding-right: 2rem;
-}
-
-
-/* ---------- Layout ---------- */
-
-.experience-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 48px; /* match About section */
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 80px 2rem 120px; 
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(245,240,230,0.95), rgba(245,240,230,1));
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(47,65,86,0.08);
+}
+
+/* ---------- Section Title ---------- */
+.about-eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 600;
+  color: #2F4156;
+  margin-bottom: 64px;
+  text-align: left;
+  letter-spacing: 1px;
+  padding-left: 1rem;
+}
+
+/* ---------- Wrapper ---------- */
+.experience-wrapper {
+  display: flex;
+  gap: 48px;
+  padding: 0 1rem;
+  flex-wrap: wrap;
 }
 
 /* ---------- Company Tabs ---------- */
-
 .company-tabs {
   position: relative;
   min-width: 180px;
-  border-left: 3px solid #ccc;
-  padding-left: 24px;
+  padding-left: 0;
 }
 
 .company-tabs ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .company-tabs li {
   position: relative;
-  padding: 12px 0;
-  font-size: 16px;
-  color: rgba(47,65,86,0.7);
+  font-size: 17px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  color: rgba(47,65,86,0.6);
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 24px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all 0.35s ease;
+}
+
+.company-tabs li:hover {
+  background: rgba(51,124,232,0.05);
+  color: #337ce8;
 }
 
 .company-tabs li.active {
-  color: #2F4156;
-  font-weight: 500;
+  font-weight: 600;
+  background: rgba(51,124,232,0.1);
+  color: #337ce8;
+  box-shadow: 0 8px 24px rgba(51,124,232,0.12);
 }
 
 .company-tabs li::before {
@@ -260,73 +283,75 @@ body {
   left: -28px;
   top: 50%;
   transform: translateY(-50%);
-  opacity: 0.25;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  opacity: 0.2;
+  transition: all 0.3s ease;
 }
 
 .company-tabs li.active::before {
-  opacity: 0.85;
+  opacity: 0.9;
   color: #337ce8;
 }
 
-/* Tab Indicator (vertical line) */
+/* Sliding Indicator */
 .tab-indicator {
   position: absolute;
-  left: -3px;
-  width: 3px;
-  background-color: #337ce8;
+  left: 0;
+  width: 4px;
+  background: #337ce8;
   border-radius: 2px;
-  transition: top 0.3s ease, height 0.3s ease;
+  transition: top 0.35s ease, height 0.35s ease;
 }
 
 /* ---------- Job Panels ---------- */
-
 .job-details {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .job-panel {
   display: none;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateX(20px);
   transition: all 0.45s ease;
+  background: rgba(255,255,255,0.6);
+  border-radius: 16px;
   padding: 32px 36px;
   margin-bottom: 24px;
+  box-shadow: 0 15px 40px rgba(47,65,86,0.1);
+  backdrop-filter: blur(8px);
   border-left: 6px solid #337ce8;
-  border-radius: 0; /* remove card rounding */
-  box-shadow: none; /* remove floating card shadow */
-  background: transparent; /* remove overlay */
 }
 
 .job-panel.active {
   display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* ---------- Job Text ---------- */
-
 .job-title {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
   color: #2F4156;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .job-title span {
+  font-weight: 400;
   color: rgba(47,65,86,0.65);
 }
 
 .job-date {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Merriweather', serif;
   font-size: 14px;
+  font-style: italic;
   color: rgba(47,65,86,0.55);
   margin-bottom: 24px;
 }
 
 /* ---------- Bullet Points ---------- */
-
 .job-bullets {
   list-style: none;
   padding: 0;
@@ -335,7 +360,7 @@ body {
 
 .job-bullets li {
   position: relative;
-  padding-left: 26px;
+  padding-left: 28px;
   margin-bottom: 14px;
   font-size: 15px;
   line-height: 1.8;
@@ -355,7 +380,12 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  color: rgba(47,65,86,0.6);
+  color: rgba(51,124,232,0.6);
+}
+
+/* ---------- Animations ---------- */
+.job-panel.active .job-title {
+  animation: slideIn 0.5s ease forwards;
 }
 
 @keyframes bulletSlideIn {
@@ -363,19 +393,12 @@ body {
   to { opacity: 1; transform: translateX(0);}
 }
 
-/* ---------- Animations ---------- */
-
-.job-panel.active .job-title {
-  animation: slideInRight 0.5s ease forwards;
-}
-
-@keyframes slideInRight {
+@keyframes slideIn {
   from { opacity: 0; transform: translateX(-15px);}
   to { opacity: 1; transform: translateX(0);}
 }
 
 /* ---------- Mobile ---------- */
-
 @media (max-width: 768px) {
   .experience-wrapper {
     flex-direction: column;
@@ -385,14 +408,13 @@ body {
   .company-tabs {
     width: 100%;
     border-left: none;
-    border-top: 3px solid #ccc;
-    padding-left: 0;
+    border-top: 3px solid rgba(47,65,86,0.2);
     padding-top: 12px;
   }
 
   .company-tabs ul {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     overflow-x: auto;
   }
 
@@ -406,9 +428,10 @@ body {
     width: auto;
     bottom: 0;
     left: 0;
-    right: auto;
   }
 }
+
+
 /* =========================
    PROJECTS SECTION
    ========================= */
@@ -523,6 +546,14 @@ body {
 .project-links a:hover {
   color: #337ce8;
   transform: translateY(-2px);
+}
+.projects-intro {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  color: rgba(47,65,86,0.8);
+  text-align: center;
+  margin-bottom: 32px;
+  font-style: italic;
 }
 
 /* Mobile */
