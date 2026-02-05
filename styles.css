@@ -87,7 +87,7 @@ body {
 }
 
 /* =========================
-   FULL IMAGE SECTIONS & OVERLAY
+   IMAGES
    ========================= */
 .full-image-section {
   position: relative;
@@ -811,6 +811,7 @@ body {
   }
 
   /* Projects */
+  
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 24px;
