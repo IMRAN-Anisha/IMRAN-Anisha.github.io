@@ -1063,7 +1063,7 @@ body {
 
 .about-glass .LI-profile-badge {
   margin: 0 auto !important;
-  transform: translateX(25px);
+  transform: none !important;
 }
 
 
