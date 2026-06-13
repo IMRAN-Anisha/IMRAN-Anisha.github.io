@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anisha Imran</title>
+
+  <!-- Fonts (your CSS already references these; loading them here so they render) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&family=Lora:ital@0;1&family=Merriweather:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display+SC:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <!-- Font Awesome CDN -->
@@ -78,7 +84,7 @@
         </p>
 
         <p class="about-quote">
-            I don’t rush the process. I trust it.
+            I say yes to the hard thing, then build my way to the answer.
         </p>
         </div>
 
@@ -99,7 +105,7 @@
     </div>
     </section>
 
-<!-- Experience Section -->
+<!-- Experience Section (tabbed, compact) -->
 <section id="experience" class="experience-section">
   <div class="section-content">
     <h2 class="about-eyebrow">Experience</h2>
@@ -107,325 +113,467 @@
       A journey through roles and projects that shaped my growth, sharpened my skills, and created meaningful impact.
     </p>
 
-    <div class="experience-wrapper">
+    <div class="exp-topfilter">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="engineering">Tech &amp; Engineering</button>
+      <button data-filter="ai-data">AI &amp; Data</button>
+      <button data-filter="education">Education</button>
+      <button data-filter="university">University</button>
+      <button data-filter="volunteering">Volunteering</button>
+    </div>
 
-      <!-- Company Tabs -->
+    <!-- Experience All View — visual overview map -->
+    <div class="exp-sticky" aria-label="Experience navigation note">
+      <b>How to explore:</b><br>
+      Start with <b>All</b> for the big picture, then use the filters to zoom into each area. Click any role to read the detail.
+    </div>
+
+    <div class="exp-overview" id="expOverview">
+      <div class="exp-overview-head">
+        <span class="exp-mini-stamp">experience map</span>
+        <h3>One story, five directions.</h3>
+        <p>
+          A visual snapshot of the places I build, teach, lead, analyse, and contribute — with the detailed role notes one click away.
+        </p>
+      </div>
+
+      <div class="exp-stats" aria-label="Experience summary stats">
+        <div class="es"><span class="n">17+</span><span class="l">Roles &amp; Projects</span></div>
+        <div class="es"><span class="n">5</span><span class="l">Experience Areas</span></div>
+        <div class="es"><span class="n">2020–26</span><span class="l">Timeline</span></div>
+        <div class="es"><span class="n">3</span><span class="l">Build · Teach · Lead</span></div>
+      </div>
+
+      <div class="exp-map" aria-label="Experience category map">
+        <article class="cat-card cat-eng">
+          <header><span class="dot"></span><h4>Tech &amp; Engineering</h4><span class="cnt">4</span></header>
+          <button class="role-chip" type="button" data-jump="0"><b>Juurnee</b><span>Technical Co-Founder &amp; CTO</span></button>
+          <button class="role-chip" type="button" data-jump="3"><b>Ascend Growth Systems</b><span>Automation Systems Engineer</span></button>
+          <button class="role-chip" type="button" data-jump="10"><b>Country Therapy</b><span>Web Developer / IT &amp; Media</span></button>
+          <button class="role-chip" type="button" data-jump="12"><b>SmartBuy Property Advisory</b><span>Junior Web Developer</span></button>
+        </article>
+
+        <article class="cat-card cat-ai">
+          <header><span class="dot"></span><h4>AI &amp; Data</h4><span class="cnt">2</span></header>
+          <button class="role-chip" type="button" data-jump="4"><b>Invisible Technologies</b><span>AI Trainer / Operations</span></button>
+          <button class="role-chip" type="button" data-jump="5"><b>TELUS Digital</b><span>Data Analyst</span></button>
+        </article>
+
+        <article class="cat-card cat-edu">
+          <header><span class="dot"></span><h4>Education</h4><span class="cnt">4</span></header>
+          <button class="role-chip" type="button" data-jump="6"><b>CreateNLearn</b><span>CS &amp; Programming Instructor</span></button>
+          <button class="role-chip" type="button" data-jump="8"><b>The Insight Letter</b><span>Founder &amp; Content Lead</span></button>
+          <button class="role-chip" type="button" data-jump="9"><b>Oz Scholars Academy</b><span>Founder &amp; Academic Consultant</span></button>
+          <button class="role-chip" type="button" data-jump="11"><b>Alchemy Tuition</b><span>Maths, English, STEM Tutor</span></button>
+        </article>
+
+        <article class="cat-card cat-uni">
+          <header><span class="dot"></span><h4>University</h4><span class="cnt">3</span></header>
+          <button class="role-chip" type="button" data-jump="1"><b>GDG · UTS</b><span>Developer Community</span></button>
+          <button class="role-chip" type="button" data-jump="2"><b>UTS Tech Society</b><span>Sponsorships Representative</span></button>
+          <button class="role-chip" type="button" data-jump="7"><b>Engineers Without Borders</b><span>Engineering Design Contributor</span></button>
+        </article>
+
+        <article class="cat-card cat-vol">
+          <header><span class="dot"></span><h4>Volunteering</h4><span class="cnt">4</span></header>
+          <button class="role-chip" type="button" data-jump="13"><b>MATW Project</b><span>Technical Operations</span></button>
+          <button class="role-chip" type="button" data-jump="14"><b>Rotary Interact</b><span>Fundraising &amp; Events</span></button>
+          <button class="role-chip" type="button" data-jump="15"><b>Rossmoyne SHS</b><span>Peer Math Tutor</span></button>
+          <button class="role-chip" type="button" data-jump="16"><b>Go MAD</b><span>Student Fundraiser</span></button>
+        </article>
+      </div>
+    </div>
+
+    <div class="experience-wrapper exp-details-hidden" id="experienceWrapper">
+
       <nav class="company-tabs" role="tablist">
         <ul>
-          <li class="active" data-tab="0">Country Therapy</li>
-          <li data-tab="1">Smartbuy Property Advisory</li>
-          <li data-tab="2">Alchemy Tuition</li>
-          <li data-tab="3">Oz Scholars Academy</li>
-          <li data-tab="4">Volunteering</li>
+            <li class="active" data-tab="0" data-cat="engineering">Juurnee</li>
+            <li data-tab="1" data-cat="university">GDG · UTS</li>
+            <li data-tab="2" data-cat="university">UTS Tech Society</li>
+            <li data-tab="3" data-cat="engineering">Ascend Growth Systems</li>
+            <li data-tab="4" data-cat="ai-data">Invisible Technologies</li>
+            <li data-tab="5" data-cat="ai-data">TELUS Digital</li>
+            <li data-tab="6" data-cat="education">CreateNLearn</li>
+            <li data-tab="7" data-cat="university">Engineers Without Borders</li>
+            <li data-tab="8" data-cat="education">The Insight Letter</li>
+            <li data-tab="9" data-cat="education">Oz Scholars Academy</li>
+            <li data-tab="10" data-cat="engineering">Country Therapy</li>
+            <li data-tab="11" data-cat="education">Alchemy Tuition</li>
+            <li data-tab="12" data-cat="engineering">SmartBuy Property Advisory</li>
+            <li data-tab="13" data-cat="volunteering">MATW Project</li>
+            <li data-tab="14" data-cat="volunteering">Rotary Interact</li>
+            <li data-tab="15" data-cat="volunteering">Rossmoyne SHS</li>
+            <li data-tab="16" data-cat="volunteering">Go MAD</li>
         </ul>
         <div class="tab-indicator"></div>
       </nav>
 
-      <!-- Job Panels -->
       <div class="job-details">
 
-        <!-- Country Therapy -->
-        <div class="job-panel active">
-          <h3 class="job-title">Web Developer | IT & Media Officer <span></span></h3>
-          <p class="job-date">Nov 2025 – Present</p>
-          <p class="job-subtitle">Key Contributions</p>
-          <ul class="job-bullets">
-            <li>
-              Developed & managed multiple company websites using Wix, HTML, CSS, and JavaScript,
-              improving SEO and cross-device UX. Drove rapid client acquisition,
-              <strong>onboarding 3 new clients in 5 days</strong> through SEO strategy and chat form deployment.
-            </li>
-            <li>
-              Provided IT support including troubleshooting, email setup, and network tasks.
-            </li>
-            <li>
-              Managed social media channels and produced multimedia content such as podcast videos,
-              reels, and promotional materials, while overseeing Google Business and analytics performance.
-            </li>
-          </ul>
-        </div>
+          <div class="job-panel active">
+            <h3 class="job-title">Technical Co-Founder &amp; CTO <span>· Juurnee</span></h3>
+            <p class="job-date">Jun 2026 – Present</p>
+            <div class="job-impact">
+              <div class="impact-stat"><span class="num">16K+</span><span class="lbl">Users</span></div>
+              <div class="impact-stat"><span class="num">$30K</span><span class="lbl">Rev in 2 weeks</span></div>
+              <div class="impact-stat"><span class="num">11K+</span><span class="lbl">Signups in days</span></div>
+            </div>
+            <ul class="job-bullets">
+              <li>Own the full technical stack as CTO of a three-person team, taking Juurnee from concept to a live platform serving <strong>16,000+ users</strong>.</li>
+              <li>Held the system stable through a prime-time Australian news feature that drove <strong>11,000+ signups in a few days</strong>.</li>
+              <li>Architected the pivot from a marketplace to a subscription model — <strong>$30K revenue within two weeks</strong> of launch.</li>
+            </ul>
+            <div class="job-stack"><span>System Architecture</span><span>Full-Stack</span><span>Scaling Under Load</span></div>
+          </div>
 
-        <!-- SmartBuy Property Advisory -->
-        <div class="job-panel">
+          <div class="job-panel">
+            <h3 class="job-title">GDG Associate <span>· Google Developer Group · UTS</span></h3>
+            <p class="job-date">Jun 2026 – Present</p>
+            <ul class="job-bullets">
+              <li>Active member of the UTS Google Developer Group, engaging with the campus developer community through technical events and workshops.</li>
+            </ul>
+            <div class="job-stack"><span>Developer Community</span></div>
+          </div>
 
-          <!-- Most recent role -->
-          <h3 class="job-title">Front End Developer <span></span></h3>
-          <p class="job-date">Dec 2024 – Jul 2025</p>
-          <p class="job-subtitle">Key Contributions</p>
-          <ul class="job-bullets">
-            <li>
-              Developed and maintained responsive, mobile-optimised web pages using HTML, CSS,
-              and JavaScript, improving usability and visual consistency across devices.
-            </li>
-            <li>
-              Optimised front-end assets and streamlined code structure,
-              reducing page load times by approximately 40%.
-            </li>
-            <li>
-              Collaborated with stakeholders to translate business requirements into
-              clean, scalable front-end solutions.
-            </li>
-          </ul>
+          <div class="job-panel">
+            <h3 class="job-title">2026 Sponsorships Representative <span>· UTS Tech Society</span></h3>
+            <p class="job-date">May 2026 – Present</p>
+            <ul class="job-bullets">
+              <li>Secure and manage sponsor partnerships for one of UTS’s largest student tech societies, connecting industry with the student body.</li>
+            </ul>
+            <div class="job-stack"><span>Partnerships</span><span>Sponsorships</span></div>
+          </div>
 
-          <!-- Earlier role -->
-          <h3 class="job-title">Graphic Designer <span></span></h3>
-          <p class="job-date">Mar 2023 – Dec 2024</p>
-          <p class="job-subtitle">Key Contributions</p>
-          <ul class="job-bullets">
-            <li>
-              Created visually engaging marketing assets using Canva, Adobe Acrobat, and Figma,
-              applying user-centred UX/UI principles to enhance brand consistency and usability.
-            </li>
-            <li>
-              Increased Facebook visibility by 30%, gaining 50+ new followers within 3 weeks through
-              consistent visual branding and optimised content strategy.
-            </li>
-            <li>
-              Conducted market research and analysed audience insights to inform design decisions
-              and improve engagement across digital platforms.
-            </li>
-          </ul>
-        </div>
+          <div class="job-panel">
+            <h3 class="job-title">Founder &amp; Automation Systems Engineer <span>· Ascend Growth Systems</span></h3>
+            <p class="job-date">Apr 2026 – Present</p>
+            <ul class="job-bullets">
+              <li>Architected end-to-end automation systems orchestrating enquiry capture, lead routing, and follow-up for real-estate and hospitality clients — cutting response latency and reducing no-shows.</li>
+              <li>Engineered integration layers with <strong>n8n and REST APIs</strong> to unify lead sources, messaging channels, and CRMs into one operational pipeline.</li>
+              <li>Turned operational pain points into technical workflows with live business owners, iterating on reliability from real deployment feedback.</li>
+            </ul>
+            <div class="job-stack"><span>n8n</span><span>REST APIs</span><span>Webhooks</span><span>CRM Integration</span></div>
+          </div>
 
-        <!-- Alchemy Tuition -->
-        <div class="job-panel">
-          <h3 class="job-title">Educator & Academic Consultant <span></span></h3>
-          <p class="job-date">Nov 2025 – Present</p>
-          <p class="job-subtitle">Key Contributions</p>
-          <ul class="job-bullets">
-            <li>
-              Provided personalised online tutoring for K–12 students, improving confidence,
-              engagement, and academic performance through structured, student-centred learning.
-            </li>
-          </ul>
-        </div>
+          <div class="job-panel">
+            <h3 class="job-title">AI Trainer / AI Operations Contractor <span>· Invisible Technologies</span></h3>
+            <p class="job-date">Mar 2026 – Present · Contract</p>
+            <ul class="job-bullets">
+              <li>Tested and evaluated early-stage AI systems for growth automation and local search optimisation in production-adjacent settings.</li>
+              <li>Contributed structured feedback on model behaviour and automation accuracy, driving iterative tooling improvement.</li>
+            </ul>
+            <div class="job-stack"><span>Model Evaluation</span><span>AI Operations</span></div>
+          </div>
 
-        <!-- Oz Scholars Academy -->
-        <div class="job-panel">
+          <div class="job-panel">
+            <h3 class="job-title">Data Analyst <span>· TELUS Digital AI Data Solutions</span></h3>
+            <p class="job-date">Mar 2026 – Present · Contract</p>
+            <ul class="job-bullets">
+              <li>Validated structured datasets at scale, applying analytical frameworks to surface anomalies, inconsistencies, and data-quality issues.</li>
+              <li>Interpreted ambiguous and incomplete information through structured reasoning, holding high precision under time-sensitive conditions.</li>
+              <li>Independently prioritised and resolved discrepancies in a fast-paced remote environment.</li>
+            </ul>
+            <div class="job-stack"><span>Data Quality</span><span>Anomaly Detection</span><span>Structured Reasoning</span></div>
+          </div>
 
-          <!-- Most recent role -->
-          <h3 class="job-title">Founder & Academic Consultant <span></span></h3>
-          <p class="job-date">Dec 2025 – Present</p>
-          <p class="job-subtitle">Key Contributions</p>
-          <ul class="job-bullets">
-            <li>
-              Founded and leading an independent educational initiative delivering structured,
-              example-driven learning resources across K–12 and Computer Science specialisation.
-            </li>
-            <li>
-              Developing exercises, visual aids, and real-world applications to support diverse
-              learning needs, including special education support.
-            </li>
-            <li>
-              Expanding tutoring and educational offerings through scalable digital resources.
-            </li>
-          </ul>
+          <div class="job-panel">
+            <h3 class="job-title">Computer Science &amp; Programming Instructor <span>· CreateNLearn</span></h3>
+            <p class="job-date">Mar 2026 – Present · Contract</p>
+            <ul class="job-bullets">
+              <li>Deliver live one-on-one and small-group sessions across coding, maths, and STEM using Scratch, Python, and Minecraft.</li>
+              <li>Translate abstract concepts into hands-on, project-based builds that improve comprehension and retention.</li>
+            </ul>
+            <div class="job-stack"><span>Python</span><span>STEM</span><span>Teaching</span></div>
+          </div>
 
-          <!-- Concurrent role -->
-          <h3 class="job-title">Author — Computer Science ATAR <span></span></h3>
-          <p class="job-date">Dec 2025 – Present</p>
-          <p class="job-subtitle">Key Contributions</p>
-          <ul class="job-bullets">
-            <li>
-              Authoring a WA syllabus-aligned Computer Science textbook and learning resources
-              to support WACE exam preparation.
-            </li>
-            <li>
-              Creating clear explanations, worked examples, practical exercises,
-              and exam-style questions to strengthen student understanding.
-            </li>
-            <li>
-              Developing content for both digital and print formats.
-            </li>
-          </ul>
-        </div>
+          <div class="job-panel">
+            <h3 class="job-title">Engineering Design Project Contributor <span>· Engineers Without Borders · UTS</span></h3>
+            <p class="job-date">Feb 2026 – Present</p>
+            <ul class="job-bullets">
+              <li>Designed an <strong>energy-monitoring and fault-diagnosis system</strong> for the Port Stewart Lama Lama community across a 12-week design cycle.</li>
+              <li>Led research synthesis and requirements definition, grounding the solution in real community constraints.</li>
+              <li>Justified engineering decisions in structured design reviews, iterating on technical feasibility.</li>
+            </ul>
+            <div class="job-stack"><span>Systems Design</span><span>Fault Diagnosis</span><span>Requirements</span></div>
+          </div>
 
-        <!-- Volunteering -->
-        <div class="job-panel">
+          <div class="job-panel">
+            <h3 class="job-title">Founder &amp; Content Lead <span>· The Insight Letter</span></h3>
+            <p class="job-date">Jan 2026 – Present · Self-employed</p>
+            <ul class="job-bullets">
+              <li>Write a weekly newsletter documenting my learning across software engineering, maths, and productivity — sharing lessons in real time so others can adapt what’s useful.</li>
+            </ul>
+            <div class="job-stack"><span>Writing</span><span>Newsletter</span></div>
+          </div>
 
-          <h3 class="job-title">Organisational Member <span></span></h3>
-          <p class="job-date">Feb 2023 – Jul 2023</p>
-          <p class="job-subtitle">Rotary International (Interact Club)</p>
-          <ul class="job-bullets">
-            <li>
-              Supported planning and execution of school fundraising events, assisting with budgeting,
-              logistics, and coordination.
-            </li>
-            <li>
-              Contributed to initiatives that raised <strong>$1,000+</strong> for local and global charities;
-              recognised for strong organisation and reliability.
-            </li>
-          </ul>
+          <div class="job-panel">
+            <h3 class="job-title">Founder &amp; Academic Consultant <span>· Oz Scholars Academy</span></h3>
+            <p class="job-date">Dec 2025 – Present · Self-employed</p>
+            <ul class="job-bullets">
+              <li>Founded an ed-tech initiative building scalable, example-driven learning systems across K–12, computer science, and special-needs support.</li>
+              <li>Authoring a WA-syllabus Computer Science textbook with worked examples, exercises, and exam-style questions for digital and print.</li>
+            </ul>
+            <div class="job-stack"><span>Curriculum Design</span><span>Learning Systems</span></div>
+          </div>
 
-          <h3 class="job-title">Peer Math Tutor <span></span></h3>
-          <p class="job-date">Feb 2023 – Dec 2023</p>
-          <p class="job-subtitle">Rossmoyne Senior High School</p>
-          <ul class="job-bullets">
-            <li>
-              Delivered weekly one-on-one and small-group tutoring sessions,
-              adapting explanations to different learning styles.
-            </li>
-            <li>
-              Strengthened communication and leadership skills while supporting peers’ academic progress.
-            </li>
-          </ul>
+          <div class="job-panel">
+            <h3 class="job-title">Web Developer | IT &amp; Media Officer <span>· Country Therapy</span></h3>
+            <p class="job-date">Nov 2025 – Present · Part-time</p>
+            <div class="job-impact">
+              <div class="impact-stat"><span class="num">3 in 5</span><span class="lbl">Clients in 5 days</span></div>
+              <div class="impact-stat"><span class="num">26+</span><span class="lbl">Clients in 4 months</span></div>
+            </div>
+            <ul class="job-bullets">
+              <li>Built and managed production sites (Wix, HTML/CSS/JavaScript) with SEO and conversion focus — driving 3 new clients in 5 days and 26+ within 4 months.</li>
+              <li>Owned domain infrastructure end-to-end: DNS, SSL, business email, backups, and uptime monitoring.</li>
+              <li>Ran content, analytics, Google Business, and podcast post-production for consistent brand presence.</li>
+            </ul>
+            <div class="job-stack"><span>JavaScript</span><span>HTML/CSS</span><span>SEO</span><span>DNS / SSL</span></div>
+          </div>
 
-          <h3 class="job-title">Student Fundraiser <span></span></h3>
-          <p class="job-date">Mar 2020 – Jun 2020</p>
-          <p class="job-subtitle">Go MAD (Go Make A Difference)</p>
-          <ul class="job-bullets">
-            <li>
-              Co-developed a student-led social enterprise funding education for women in underprivileged communities.
-            </li>
-            <li>
-              Helped raise <strong>$200+</strong>, earning recognition as one of the program’s top-performing teams.
-            </li>
-          </ul>
+          <div class="job-panel">
+            <h3 class="job-title">Primary &amp; Secondary Tutor — Maths, English, STEM <span>· Alchemy Tuition</span></h3>
+            <p class="job-date">Nov 2025 – Present · Contract</p>
+            <ul class="job-bullets">
+              <li>Deliver personalised tutoring with tailored lesson plans and study resources, tracking progress and building student confidence.</li>
+              <li>Use creative, accessible approaches to make complex concepts click.</li>
+            </ul>
+            <div class="job-stack"><span>Tutoring</span><span>Lesson Planning</span></div>
+          </div>
 
-          <h3 class="job-title">Technical Operations Associate <span></span></h3>
-          <p class="job-date">Feb 2026 – Present</p>
-          <p class="job-subtitle">MATW Project</p>
-          <ul class="job-bullets">
-            <li>
-              Supporting technical and operational tasks for a social impact initiative,
-              contributing to digital systems and project coordination.
-            </li>
-          </ul>
-        </div>
+          <div class="job-panel">
+            <h3 class="job-title">Junior Web Developer <span>· SmartBuy Property Advisory</span></h3>
+            <p class="job-date">Dec 2024 – Aug 2025 · Part-time</p>
+            <div class="job-impact">
+              <div class="impact-stat"><span class="num">~40%</span><span class="lbl">Faster loads</span></div>
+              <div class="impact-stat"><span class="num">+30%</span><span class="lbl">FB engagement</span></div>
+            </div>
+            <ul class="job-bullets">
+              <li>Engineered responsive, mobile-first interfaces in HTML, CSS, and JavaScript, then refactored assets to cut page load times by <strong>~40%</strong>.</li>
+              <li>Translated UX/UI feedback and design specs into production-ready, scalable components aligned with brand systems.</li>
+            </ul>
+            <div class="role-divider"></div>
+            <h3 class="job-title">Junior Graphic Designer <span>· SmartBuy Property Advisory</span></h3>
+            <p class="job-date">Sep 2023 – Dec 2024</p>
+            <ul class="job-bullets">
+              <li>Designed digital and print marketing assets, strengthening brand consistency across platforms.</li>
+              <li>Drove a <strong>30% lift in Facebook engagement</strong> and +50 followers in 3 weeks through data-informed content and audience analysis.</li>
+            </ul>
+            <div class="job-stack"><span>JavaScript</span><span>HTML/CSS</span><span>Performance</span><span>Figma</span></div>
+          </div>
+
+          <div class="job-panel">
+            <h3 class="job-title">Technical Operations Associate <span>· MATW Project</span></h3>
+            <p class="job-date">Feb 2026 – Present · Volunteer</p>
+            <ul class="job-bullets">
+              <li>Support technical and operational tasks for a social-impact initiative, contributing to digital systems and project coordination.</li>
+            </ul>
+            <div class="job-stack"><span>Operations</span><span>Volunteer</span></div>
+          </div>
+
+          <div class="job-panel">
+            <h3 class="job-title">Organisational Member <span>· Rotary International · Interact Club</span></h3>
+            <p class="job-date">Feb 2023 – Jul 2023 · Volunteer</p>
+            <div class="job-impact">
+              <div class="impact-stat"><span class="num">$1,000+</span><span class="lbl">Raised</span></div>
+            </div>
+            <ul class="job-bullets">
+              <li>Coordinated school fundraising events — budgeting, prizes, and logistics — raising <strong>$1,000+</strong> for local and global charities.</li>
+              <li>Awarded a Certificate of Recognition for organisation, reliability, and attention to detail.</li>
+            </ul>
+            <div class="job-stack"><span>Fundraising</span><span>Event Coordination</span></div>
+          </div>
+
+          <div class="job-panel">
+            <h3 class="job-title">Peer Math Tutor <span>· Rossmoyne Senior High School</span></h3>
+            <p class="job-date">Feb 2023 – Dec 2023 · Volunteer</p>
+            <ul class="job-bullets">
+              <li>Ran weekly one-on-one and small-group maths tutoring, adapting explanations to different learning styles and supporting peers’ academic progress.</li>
+            </ul>
+            <div class="job-stack"><span>Tutoring</span><span>Leadership</span></div>
+          </div>
+
+          <div class="job-panel">
+            <h3 class="job-title">Student Fundraiser <span>· Go MAD · Go Make A Difference</span></h3>
+            <p class="job-date">Mar 2020 – Jun 2020 · Volunteer</p>
+            <div class="job-impact">
+              <div class="impact-stat"><span class="num">$200+</span><span class="lbl">Raised</span></div>
+            </div>
+            <ul class="job-bullets">
+              <li>Co-developed a social enterprise funding education for women in underprivileged communities, raising <strong>$200+</strong> as one of the program’s top-earning teams.</li>
+            </ul>
+            <div class="job-stack"><span>Social Enterprise</span><span>Community Engagement</span></div>
+          </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<section id="projects" class="projects-section">
-  <div class="section-content">
-    <h2 class="about-eyebrow">Projects</h2>
-    <p class="projects-intro">
-      A curated selection of my personal and academic projects — where code meets creativity, and ideas come to life.
-    </p>
+<!-- Projects Section — scrapbook collage -->
+<section id="projects" class="collage-section">
+  <div class="collage-canvas">
 
-    <div class="projects-grid">
+    <div class="collage-head">
+      <span class="collage-stamp">Selected · 2023 – 2026 · Sydney</span>
+      <h2 class="collage-title">Things I&rsquo;ve <em>built</em></h2>
+      <p class="collage-sub">Ventures shipped to real users and builds that show the fundamentals — clipped together, the way I actually think about them.</p>
+      <div class="collage-barcode">
+        <div class="bars"></div>
+        <div class="code">AI&middot;2026&middot;PORTFOLIO</div>
+      </div>
+    </div>
 
-      <!-- Community Connect -->
-      <article class="project-card">
-        <div class="project-image">
-          <img src="assets/project thumbnails/communityconnect.png" alt="Community Connect">
-        </div>
-        <div class="project-content">
-          <h3>Community Connect</h3>
-          <p>Community Connect is a full-stack platform connecting volunteers with community organisations bridging the gap between help and impact.</p>
-          
-          <!-- Divider -->
-          <div class="project-divider"></div>
+    <div class="collage-grid">
 
-          <!-- Tech Stack -->
-          <div class="project-tech">
-            <span>Python</span>
-            <span>HTML/CSS</span>
-            <span>SQL Lite</span>
+      <!-- FEATURE · Juurnee (unchanged) -->
+      <article class="clip clip-feature span7" style="--tilt:-1.4deg">
+        <div class="clip-inner">
+          <span class="tape tl"></span>
+          <div class="clip-media">
+            <span class="live-dot">Live</span>
+            <iframe src="https://imran-anisha.github.io/Juurnee/" title="Juurnee live preview" loading="lazy"></iframe>
+            <div class="cover"></div>
           </div>
-
-          <!-- Divider -->
-          <div class="project-divider"></div>
-
-          <!-- Project Links -->
-          <div class="project-links">
-            <a class="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="live-demo" href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Movie Trend Search -->
-      <article class="project-card">
-        <div class="project-image">
-          <img src="assets/project thumbnails/movieapp.png" alt="MovieApp">
-        </div>
-        <div class="project-content">
-          <h3>Movie Trend Search</h3>
-          <p>Discover what’s hot in cinema with this movie app, which pulls real-time data from TMDb to highlight trending films and help users find their next favorite movie.</p>
-          
-          <div class="project-divider"></div>
-          <div class="project-tech">
-            <span>React</span>
-            <span>Javascript</span>
-          </div>
-          <div class="project-divider"></div>
-          <div class="project-links">
-            <a class="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="live-demo" href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+          <div class="clip-body">
+            <p class="clip-kicker">the big one ·</p>
+            <h3 class="clip-title">Juurnee</h3>
+            <p>Platform I co-founded and lead as CTO with a team of three. A prime-time news feature sent 11K+ signups in days; after pivoting to subscription it made $30K in two weeks — now serving 16,000+ users.</p>
+            <div class="stamps">
+              <span class="stamp"><b>16K+</b> users</span>
+              <span class="stamp"><b>$30K</b> / 2 wks</span>
+              <span class="stamp"><b>11K+</b> signups</span>
+            </div>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>Architecture</span><span>Full-Stack</span></div>
+              <a class="clip-link" href="https://imran-anisha.github.io/Juurnee/" target="_blank" rel="noopener">Visit ↗</a>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- Computer Science Textbook -->
-      <article class="project-card">
-        <div class="project-image">
-          <img src="assets/project thumbnails/coming soon.png" alt="Textbook">
-        </div>
-        <div class="project-content">
-          <h3>Computer Science Textbook</h3>
-          <p>WA SCSA-aligned ATAR Computer Science textbook for Units 3 & 4, blending theory, programming practice, and exam-ready exercises.</p>
-          
-          <div class="project-divider"></div>
-          <div class="project-tech">
-            <span>Programming Fundamentals</span>
+      <!-- Ascend (embed) -->
+      <article class="clip span5 m-lg" style="--tilt:1.7deg">
+        <div class="clip-inner">
+          <span class="tape tr"></span>
+          <div class="clip-media">
+            <span class="live-dot">Live</span>
+            <iframe src="https://imran-anisha.github.io/Ascend-Growth-Systems/" title="Ascend live preview" loading="lazy"></iframe>
+            <div class="cover"></div>
           </div>
-          <div class="project-divider"></div>
-          <div class="project-links">
-            <a class="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="live-demo" href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Pacman Recreation -->
-      <article class="project-card">
-        <div class="project-image">
-          <img src="assets/project thumbnails/pacman.png" alt="Pacman">
-        </div>
-        <div class="project-content">
-          <h3>Pacman Recreation</h3>
-          <p>Paman Recreation is an interactive game that blends strategy and creativity, challenging players to solve puzzles and achieve goals in a dynamic, engaging environment.</p>
-          
-          <div class="project-divider"></div>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Graphics Design</span>
-            <span>OOP</span>
-          </div>
-          <div class="project-divider"></div>
-          <div class="project-links">
-            <a class="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="live-demo" href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+          <div class="clip-body">
+            <p class="clip-kicker">automation ·</p>
+            <h3 class="clip-title">Ascend Growth Systems</h3>
+            <p>AI automation agency wiring lead capture, routing, and follow-up into one pipeline for hospitality and real-estate teams — built to kill response lag and no-shows.</p>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>n8n</span><span>APIs</span><span>CRM</span></div>
+              <a class="clip-link" href="https://imran-anisha.github.io/Ascend-Growth-Systems/" target="_blank" rel="noopener">Visit ↗</a>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- 3 in 1 Puzzle Game -->
-      <article class="project-card">
-        <div class="project-image">
-          <img src="assets/project thumbnails/maze.png" alt="PuzzleGame">
-        </div>
-        <div class="project-content">
-          <h3>3 in 1 Puzzle Game</h3>
-          <p>A 3-in-1 brain-teasing game featuring a maze, Sudoku, and Wordle—perfect for testing logic, strategy, and word skills.</p>
-          
-          <div class="project-divider"></div>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>DFS</span>
-            <span>OOP</span>
+      <!-- Oz Scholars (embed) -->
+      <article class="clip span4 m-md" style="--tilt:-1.8deg">
+        <div class="clip-inner">
+          <div class="clip-media">
+            <span class="live-dot">Live</span>
+            <iframe src="https://ozscholarsacademy.com.au" title="Oz Scholars Academy live preview" loading="lazy"></iframe>
+            <div class="cover"></div>
           </div>
-          <div class="project-divider"></div>
-          <div class="project-links">
-            <a class="github" href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a class="live-demo" href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+          <div class="clip-body">
+            <p class="clip-kicker">teaching at scale ·</p>
+            <h3 class="clip-title">Oz Scholars Academy</h3>
+            <p>Ed-tech venture building modular, example-driven learning across K–12 and CS — plus a syllabus-aligned textbook.</p>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>Learning Design</span></div>
+              <a class="clip-link" href="https://ozscholarsacademy.com.au" target="_blank" rel="noopener">Visit ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EWB (embed) -->
+      <article class="clip span4 m-md" style="--tilt:1.5deg">
+        <div class="clip-inner">
+          <span class="tape tl"></span>
+          <div class="clip-media">
+            <span class="live-dot">Live</span>
+            <iframe src="https://imran-anisha.github.io/IEP-AGM/" title="EWB project live preview" loading="lazy"></iframe>
+            <div class="cover"></div>
+          </div>
+          <div class="clip-body">
+            <p class="clip-kicker">engineering ·</p>
+            <h3 class="clip-title">Energy &amp; Fault Diagnosis</h3>
+            <p>Energy-monitoring and fault-diagnosis system for the Port Stewart Lama Lama community — a 12-week engineering design build.</p>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>Systems</span><span>Diagnostics</span></div>
+              <a class="clip-link" href="https://imran-anisha.github.io/IEP-AGM/" target="_blank" rel="noopener">View ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Solvio (coming soon) -->
+      <article class="clip clip-soon span4 m-sm" style="--tilt:-1.2deg">
+        <div class="clip-inner">
+          <span class="soon-ribbon">SOON</span>
+          <div class="clip-media brand">
+            <span class="monogram">S</span>
+            <span class="soon-stamp">coming&nbsp;soon</span>
+          </div>
+          <div class="clip-body">
+            <p class="clip-kicker">in the lab ·</p>
+            <h3 class="clip-title">Solvio</h3>
+            <p>The next build, in progress. Under wraps for now — more to share soon.</p>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>TBA</span></div>
+              <span class="clip-link">Coming soon</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Community Connect (image) -->
+      <article class="clip span6 m-lg" style="--tilt:1.3deg">
+        <div class="clip-inner">
+          <div class="clip-media"><img src="assets/project thumbnails/communityconnect.png" alt="Community Connect"></div>
+          <div class="clip-body">
+            <p class="clip-kicker">full-stack ·</p>
+            <h3 class="clip-title">Community Connect</h3>
+            <p>Platform matching volunteers with community organisations — auth, persistence, and a relational data model handled end to end.</p>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>Python</span><span>SQLite</span><span>HTML/CSS</span></div>
+              <a class="clip-link" href="https://github.com/IMRAN-Anisha" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Movie Trend Search (image) -->
+      <article class="clip span6 m-md" style="--tilt:-1.5deg">
+        <div class="clip-inner">
+          <span class="tape tr"></span>
+          <div class="clip-media"><img src="assets/project thumbnails/movieapp.png" alt="Movie Trend Search"></div>
+          <div class="clip-body">
+            <p class="clip-kicker">react ·</p>
+            <h3 class="clip-title">Movie Trend Search</h3>
+            <p>Pulls live data from the TMDb API to surface trending films — async fetching, state management, and a responsive results UI.</p>
+            <div class="clip-foot">
+              <div class="clip-tags"><span>React</span><span>API</span></div>
+              <a class="clip-link" href="https://github.com/IMRAN-Anisha" target="_blank" rel="noopener">Code ↗</a>
+            </div>
           </div>
         </div>
       </article>
 
     </div>
+  </div>
+
+  <!-- Manifesto -->
+  <div class="manifesto">
+    <p class="mq">I don&rsquo;t collect titles — I collect <em>things that work.</em> Every clip above started as a question and ended as something real.</p>
   </div>
 </section>
 
@@ -461,8 +609,9 @@
     </div>
     
     <div class="footer-right">
-      <a href="www.linkedin.com/in/anisha-imran" class="footer-link">LinkedIn</a>
-      <a href="https://github.com/IMRAN-Anisha" class="footer-link">GitHub</a>
+      <a href="https://au.linkedin.com/in/anisha-imran0311" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://github.com/IMRAN-Anisha" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+      <a href="https://the-insight-letter.beehiiv.com" target="_blank" rel="noopener" class="footer-link">Newsletter</a>
       <a href="#" class="footer-link">Contact Me</a>
     </div>
   </div>
@@ -535,78 +684,143 @@
         });
       }, { threshold: 0.1 });
       sections.forEach(section => observer.observe(section));
-    });
-    const navLinks = document.querySelectorAll('.nav-link');
-const indicator = document.querySelector('.nav-indicator');
 
-function moveIndicator(el) {
-  const rect = el.getBoundingClientRect();
-  const parentRect = el.parentElement.getBoundingClientRect();
+      // ===== Experience: visual All overview + filtered company tabs =====
+      const compTabs = document.querySelectorAll('.company-tabs li');
+      const compPanels = document.querySelectorAll('.job-panel');
+      const filterPills = document.querySelectorAll('.exp-topfilter button');
+      const expOverview = document.getElementById('expOverview');
+      const experienceWrapper = document.getElementById('experienceWrapper');
+      const roleChips = document.querySelectorAll('.role-chip[data-jump]');
 
-  indicator.style.left = `${rect.left - parentRect.left}px`;
-  indicator.style.width = `${rect.width}px`;
-}
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-    moveIndicator(link);
-  });
-});
-
-/* initial position note: need to change colour of this*/
-moveIndicator(document.querySelector('.nav-link.active'));
-const sections = document.querySelectorAll('section');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 140;
-    if (scrollY >= sectionTop) current = section.id;
-  });
-
-  navLinks.forEach(link => {
-    link.classList.toggle(
-      'active',
-      link.getAttribute('href') === `#${current}`
-    );
-  });
-
-  const activeLink = document.querySelector('.nav-link.active');
-  if (activeLink) moveIndicator(activeLink);
-});
-const timelineItems = document.querySelectorAll('.timeline-item');
-
-const timelineObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        timelineItems.forEach(item => item.classList.remove('active'));
-        entry.target.classList.add('active');
+      function activateTab(li) {
+        if (!li) return;
+        const idx = Number(li.dataset.tab);
+        compTabs.forEach(t => t.classList.remove('active'));
+        compPanels.forEach(p => p.classList.remove('active'));
+        li.classList.add('active');
+        if (compPanels[idx]) compPanels[idx].classList.add('active');
       }
+
+      function setActiveFilter(filter) {
+        filterPills.forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+      }
+
+      function showOverview() {
+        if (expOverview) expOverview.classList.remove('is-hidden');
+        if (experienceWrapper) experienceWrapper.classList.add('exp-details-hidden');
+        compTabs.forEach(li => { li.style.display = ''; });
+        setActiveFilter('all');
+      }
+
+      function showFilteredExperience(filter, preferredTab = null) {
+        if (expOverview) expOverview.classList.add('is-hidden');
+        if (experienceWrapper) experienceWrapper.classList.remove('exp-details-hidden');
+        setActiveFilter(filter);
+
+        let first = null;
+        compTabs.forEach(li => {
+          const show = li.dataset.cat === filter;
+          li.style.display = show ? '' : 'none';
+          if (show && !first) first = li;
+        });
+
+        activateTab(preferredTab || first);
+      }
+
+      compTabs.forEach(li => {
+        li.addEventListener('click', () => activateTab(li));
+      });
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const filter = pill.dataset.filter;
+          if (filter === 'all') {
+            showOverview();
+          } else {
+            showFilteredExperience(filter);
+          }
+        });
+      });
+
+      roleChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const idx = chip.dataset.jump;
+          const targetTab = document.querySelector(`.company-tabs li[data-tab="${idx}"]`);
+          if (!targetTab) return;
+          showFilteredExperience(targetTab.dataset.cat, targetTab);
+          document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      showOverview();
+
+      // ===== Live embeds: fit page width exactly to each card (no crop) =====
+      function fitEmbeds() {
+        const base = 1200; // logical desktop width the site renders at
+        document.querySelectorAll('.clip-media iframe').forEach(f => {
+          const box = f.parentElement;
+          const w = box.clientWidth, hgt = box.clientHeight;
+          if (!w) return;
+          const s = w / base;
+          f.style.width = base + 'px';
+          f.style.height = Math.ceil(hgt / s) + 'px';
+          f.style.transform = 'scale(' + s + ')';
+          f.style.transformOrigin = 'top left';
+        });
+      }
+      fitEmbeds();
+      window.addEventListener('load', fitEmbeds);
+      let _rt;
+      window.addEventListener('resize', () => { clearTimeout(_rt); _rt = setTimeout(fitEmbeds, 150); });
+
+      // ===== Collage clips: reveal on scroll =====
+      const clips = document.querySelectorAll('.clip');
+      const clipObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            clipObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      clips.forEach(clip => clipObserver.observe(clip));
     });
-  },
-  { threshold: 0.5 }
-);
 
-timelineItems.forEach(item => timelineObserver.observe(item));
-const tabs = document.querySelectorAll('.company-tabs li');
-const panels = document.querySelectorAll('.job-panel');
+    // ===== Navbar indicator + scroll spy =====
+    const navLinks = document.querySelectorAll('.nav-link');
+    const indicator = document.querySelector('.nav-indicator');
 
-tabs.forEach((tab, i) => {
-  tab.addEventListener('click', () => {
-    // Remove active from all tabs & panels
-    tabs.forEach(t => t.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
-    
-    // Add active to clicked tab & corresponding panel
-    tab.classList.add('active');
-    panels[i].classList.add('active');
-  });
-});
+    function moveIndicator(el) {
+      const rect = el.getBoundingClientRect();
+      const parentRect = el.parentElement.getBoundingClientRect();
+      indicator.style.left = `${rect.left - parentRect.left}px`;
+      indicator.style.width = `${rect.width}px`;
+    }
 
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        moveIndicator(link);
+      });
+    });
+
+    moveIndicator(document.querySelector('.nav-link.active'));
+    const navSections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      navSections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        if (scrollY >= sectionTop) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+      const activeLink = document.querySelector('.nav-link.active');
+      if (activeLink) moveIndicator(activeLink);
+    });
   </script>
   <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
   <script src="script.js" defer></script>
